@@ -6,13 +6,13 @@ SHELL ["powershell", "-Command", "$ErrorActionPreference = 'Stop'; $ProgressPref
 ENV KIBANA_VERSION="6.1.1" `
     KIBANA_SHA1="6efc6471e074dcfe6da14a6af38a323239822a4c"
 
-#RUN Invoke-WebRequest -OutFile kibana.zip "https://artifacts.elastic.co/downloads/kibana/kibana-$($env:KIBANA_VERSION)-windows-x86.zip" -UseBasicParsing; `
+RUN Invoke-WebRequest -OutFile kibana.zip "https://artifacts.elastic.co/downloads/kibana/kibana-$($env:KIBANA_VERSION)-windows-x86.zip" -UseBasicParsing; `
  #   if ((Get-FileHash kibana.zip -Algorithm sha1).Hash -ne $env:KIBANA_SHA1) {exit 1} ; `
-  #  Expand-Archive kibana.zip -DestinationPath C:\ ; `
-   # Move-Item c:\kibana-$($env:KIBANA_VERSION)-windows-x86 'C:\kibana'; `
-    #Remove-Item kibana.zip
+   Expand-Archive kibana.zip -DestinationPath C:\ ; `
+    Move-Item c:\kibana-$($env:KIBANA_VERSION)-windows-x86 'C:\kibana'; `
+    Remove-Item kibana.zip
 
-COPY /kibana /kibana
+#COPY /kibana /kibana
 
 # Default configuration for host & Elasticsearch URL
 WORKDIR C:/kibana
