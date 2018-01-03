@@ -9,7 +9,7 @@ ENV KIBANA_VERSION="6.1.1" `
 RUN Invoke-WebRequest -OutFile kibana.zip "https://artifacts.elastic.co/downloads/kibana/kibana-$($env:KIBANA_VERSION)-windows-x86.zip" -UseBasicParsing; `
  #   if ((Get-FileHash kibana.zip -Algorithm sha1).Hash -ne $env:KIBANA_SHA1) {exit 1} ; `
    Expand-Archive kibana.zip -DestinationPath C:\ ; `
-    Move-Item c:\kibana-$($env:KIBANA_VERSION)-windows-x86 'C:\kibana'; `
+    Move-Item c:\kibana-$($env:KIBANA_VERSION)-windows-x86_64 'C:\kibana'; `
     Remove-Item kibana.zip
 
 #COPY /kibana /kibana
