@@ -1,5 +1,5 @@
 # escape=`
-FROM microsoft/windowsservercore:1709
+FROM microsoft/windowsservercore:ltsc2016
 SHELL ["powershell", "-Command", "$ErrorActionPreference = 'Stop'; $ProgressPreference = 'SilentlyContinue';"]
 
 # Kibana
