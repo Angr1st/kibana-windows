@@ -33,4 +33,4 @@ HEALTHCHECK --start-period=30s --interval=10s --retries=5 `
 EXPOSE 5601
 COPY init.ps1 /
 ENTRYPOINT ["powershell"]
-CMD ["/init.ps1"]
+CMD ["/kibana/bin/kibana.bat"]
